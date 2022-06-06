@@ -1,5 +1,4 @@
 import { FormEvent, useState, ChangeEvent } from 'react';
-import classes from './NewTodo.module.css';
 import { TodosObj } from '../../model/TodosType';
 
 type NewTodoProps = {
@@ -36,16 +35,27 @@ const NewTodo = (props: NewTodoProps) => {
   };
 
   return (
-    <div className={classes.container}>
-      <form onSubmit={submitHandler} className={classes.formContainer}>
-        <label htmlFor="text">Todo Text</label>
-        <input type="text" id="text" onChange={inputHandler} value={todo} />
-        <button>Add Todo</button>
+    <div className="mt-auto h-20">
+      <form
+        onSubmit={submitHandler}
+        className="flex items-center justify-center"
+      >
+        <label htmlFor="text" className="text-4xl mr-5">
+          Todo Text
+        </label>
+        <input
+          type="text"
+          id="text"
+          className="text-3xl h-8 w-1/2 mr-5 border-none rounded-lg focus: outline-none p-1"
+          onChange={inputHandler}
+          value={todo}
+        />
+        <button className="border-none h-8 w-32 rounded-lg bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-white hover:shadow active:bg-palette1Shade active:text-white active:shadow focus:bg-palette1Shade focus:text-white focus:shadow">
+          Add Todo
+        </button>
       </form>
       {error && (
-        <p style={{ textAlign: 'center', color: 'darkred' }}>
-          Please Input a Valid Todo
-        </p>
+        <p className="text-center text-red-700">Please Input a Valid Todo</p>
       )}
     </div>
   );

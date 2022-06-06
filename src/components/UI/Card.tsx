@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import classes from './Card.module.css';
 
 type CardProps = {
   className?: string;
@@ -7,7 +6,13 @@ type CardProps = {
 };
 
 const Card = ({ className, children }: CardProps) => {
-  return <div className={`${classes.container} ${className}`}>{children}</div>;
+  return (
+    <div
+      className={`flex flex-col bg-primaryColor p-8 w-[45rem] h-[40rem] rounded-2xl shadow-xl ${className}`}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Card;

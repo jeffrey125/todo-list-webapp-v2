@@ -13,7 +13,7 @@ function App() {
   };
 
   return (
-    <main>
+    <main className="flex justify-center items-center w-screen h-screen">
       <Card>
         <Todos items={todosArr} />
         <NewTodo onAddTodo={addTodo} />
