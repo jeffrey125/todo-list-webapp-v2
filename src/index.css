@@ -1,82 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
-* ---------------------------- */
-/* Webpage system */
-/* ---------------------------- */
-/*
---- 01 Typography System
-
-- FONT SIZE SYSTEM (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
-
-- FONT WEIGHTS
-Default: 400
-Medium: 500
-Semi-bold: 600
-Bold: 700
-
-- LINE HEIGHTS
-Default: 1
-Small: 1.05
-Medium: 1.2
-Paragraph: 1.6
-Large: 1.8
-
-- LETTER SPACING
--0.5px
-0.75px
-
-
---- 02 Colors
-- MAIN COLOR: #3F88C5
-- PALETTE #44BBA4, #3F88C5, #E94F37
-- Gray: #393E41
-- TINTS:
-- SHADES: #308373
-- ACCENTS:
-
---- 03 Images
-
---- 04 Icons
-
---- 05 Shadows
-
---- 06 Border-radius
-Default: 9px
-Medium: 11px
-
---- 07 Whitespace
-- SPACING SYSTEM (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-
-
-
-*/
-
-
-* {
-  /* Percentage of user's browser font-size setting */
-  /* This is 10px */
-  font-size: 62.5%;
+html {
   color: #393e41;
-}
-
-*:focus {
-  outline: none;
-}
-
-body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', 'Lato', sans-serif;
+  font-family: 'Rubik', sans-serif;
   background-color: black;
 }
-
-main {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
+html:focus {
+  outline: none;
 }
