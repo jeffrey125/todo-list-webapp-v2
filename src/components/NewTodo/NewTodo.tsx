@@ -1,4 +1,7 @@
 import { FormEvent, useState, ChangeEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { PlusIcon } from '@heroicons/react/solid';
+
 import { TodosObj } from '../../model/TodosType';
 
 type NewTodoProps = {
@@ -27,7 +30,7 @@ const NewTodo = (props: NewTodoProps) => {
       showError(false);
       const todoData: TodosObj = {
         todo,
-        id: new Date().getTime(),
+        id: uuidv4(),
       };
       props.onAddTodo(todoData);
       setTodo('');
@@ -35,28 +38,37 @@ const NewTodo = (props: NewTodoProps) => {
   };
 
   return (
-    <div className="mt-auto h-20">
+    <div className="mt-auto sm:h-20">
       <form
         onSubmit={submitHandler}
-        className="flex items-center justify-center"
+        className="flex flex-col h-full w-full items-start sm:gap-5 sm:flex-row sm:justify-center sm:items-center"
       >
-        <label htmlFor="text" className="text-4xl mr-5">
+        <label
+          htmlFor="text"
+          className="text-2xl font-bold w-full sm:w-[30%] md:text-3xl"
+        >
           Todo Text
         </label>
-        <input
-          type="text"
-          id="text"
-          className="text-3xl h-8 w-1/2 mr-5 border-none rounded-lg focus: outline-none p-1"
-          onChange={inputHandler}
-          value={todo}
-        />
-        <button className="border-none h-8 w-32 rounded-lg bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-white hover:shadow active:bg-palette1Shade active:text-white active:shadow focus:bg-palette1Shade focus:text-white focus:shadow">
-          Add Todo
-        </button>
+        <div className="relative flex items-center gap-5 h-[5rem] w-full">
+          <input
+            type="text"
+            id="text"
+            className="text-2xl h-12 w-full  lg:text-3xl lg:w-80 border-none rounded-lg focus: outline-none p-1"
+            onChange={inputHandler}
+            value={todo}
+          />
+          {error && (
+            <p className="absolute bottom-[-5px] left-0 text-sm text-red-700">
+              Please Input a Valid Todo
+            </p>
+          )}
+
+          <button className="group flex items-center justify-center border-none font-medium h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-white hover:shadow active:bg-palette1Shade active:text-white active:shadow focus:bg-palette1Shade focus:text-white focus:shadow">
+            <span className="hidden sm:block">Add Todo</span>
+            <PlusIcon className="block sm:hidden h-5 w-5" />
+          </button>
+        </div>
       </form>
-      {error && (
-        <p className="text-center text-red-700">Please Input a Valid Todo</p>
-      )}
     </div>
   );
 };

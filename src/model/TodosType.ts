@@ -1,5 +1,5 @@
 export interface TodosObj {
-  id: number;
+  id: string;
   todo: string;
 }
 
