@@ -7,6 +7,8 @@ module.exports = {
       },
       colors: {
         primaryColor: '#3F88c5',
+        primaryTint1: '#5294cb',
+        primaryTint2: '#65a0d1',
         palette1: '#44bba4',
         palette1Shade: '#308373',
         palette2: '#e94f37',
