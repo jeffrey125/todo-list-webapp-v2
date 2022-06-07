@@ -2,10 +2,10 @@ import { FormEvent, useState, ChangeEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon } from '@heroicons/react/solid';
 
-import { TodosObj } from '../../model/TodosType';
+import { TodosObj, AddTodo } from '../../Types/TodosType';
 
 type NewTodoProps = {
-  onAddTodo: Function;
+  onAddTodo: AddTodo;
 };
 
 const NewTodo = (props: NewTodoProps) => {
@@ -28,10 +28,14 @@ const NewTodo = (props: NewTodoProps) => {
       showError(true);
     } else {
       showError(false);
+
+      // Todo Data
       const todoData: TodosObj = {
         todo,
         id: uuidv4(),
       };
+
+      // Add Todo
       props.onAddTodo(todoData);
       setTodo('');
     }

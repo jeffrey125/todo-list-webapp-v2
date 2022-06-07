@@ -1,5 +1,5 @@
 import Todo from './Todo';
-import TodosArr from '../../model/TodosType';
+import TodosArr from '../../Types/TodosType';
 
 const Todos = ({ items }: TodosArr) => {
   return (
