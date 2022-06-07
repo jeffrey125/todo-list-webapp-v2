@@ -1,20 +1,45 @@
+import { MouseEvent } from 'react';
+import { CheckIcon, PencilIcon, TrashIcon } from '@heroicons/react/solid';
+
 type TodoProps = {
+  id: string;
   todo: string;
 };
 
-const Todo = ({ todo }: TodoProps) => {
+const Todo = ({ todo, id }: TodoProps) => {
+  const doneHandler = (_: MouseEvent) => {
+    console.log(id);
+  };
+  const editHandler = (_: MouseEvent) => {
+    console.log(id);
+  };
+  const deleteHandler = (_: MouseEvent) => {
+    console.log(id);
+  };
+
   return (
-    <div className="flex justify-between items-center w-full h-16 border-b-[1px] border-black">
-      <li className="list-none">{todo}</li>
-      <div className="flex gap-5 mr-5">
-        <button className="text-xl border-none h-8 w-20 rounded-2xl bg-palette1 transition-all duration-300 hover:text-white hover:bg-palette1Shade hover:shadow focus:text-white focus:bg-palette1Shade focus:shadow active:text-white active:bg-palette1Shade active:shadow ">
-          Done
+    <div className="flex flex-col gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm: items-center lg:gap-0">
+      <li className="list-none break-all mx-4 sm:ml-4 sm:mx-0 sm:w-full">
+        {todo}
+      </li>
+      <div className="flex justify-center w-full gap-5 sm:justify-end sm:mr-4">
+        <button
+          onClick={doneHandler}
+          className="group flex justify-center items-center border-none h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:shadow  focus:bg-palette1Shade focus:shadow active:bg-palette1Shade active:shadow"
+        >
+          <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300" />
         </button>
-        <button className="text-xl border-none h-8 w-20 rounded-2xl bg-palette1 transition-all duration-300 hover:text-white hover:bg-palette1Shade hover:shadow focus:text-white focus:bg-palette1Shade focus:shadow active:text-white active:bg-palette1Shade active:shadow ">
-          Edit
+        <button
+          onClick={editHandler}
+          className="group flex justify-center items-center border-none h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:shadow  focus:bg-palette1Shade focus:shadow active:bg-palette1Shade active:shadow"
+        >
+          <PencilIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300" />
         </button>
-        <button className="text-xl border-none h-8 w-20 rounded-2xl bg-palette1 transition-all duration-300 hover:text-white hover:bg-palette1Shade hover:shadow focus:text-white focus:bg-palette1Shade focus:shadow active:text-white active:bg-palette1Shade active:shadow ">
-          Delete
+        <button
+          onClick={deleteHandler}
+          className="group flex justify-center items-center border-none h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:shadow  focus:bg-palette1Shade focus:shadow active:bg-palette1Shade active:shadow"
+        >
+          <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300" />
         </button>
       </div>
     </div>

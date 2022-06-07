@@ -1,14 +1,13 @@
 import { ReactNode } from 'react';
 
 type CardProps = {
-  className?: string;
   children: ReactNode;
 };
 
-const Card = ({ className, children }: CardProps) => {
+const Card = ({ children }: CardProps) => {
   return (
     <div
-      className={`flex flex-col bg-primaryColor p-8 w-[45rem] h-[40rem] rounded-2xl shadow-xl ${className}`}
+      className={`flex flex-col bg-primaryColor p-8 w-full h-full  rounded-2xl shadow-xl lg:w-[45rem] lg:h-[40rem]`}
     >
       {children}
     </div>
