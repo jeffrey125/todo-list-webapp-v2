@@ -1,16 +1,14 @@
-import { FormEvent, useState, ChangeEvent } from 'react';
+import { FormEvent, useState, ChangeEvent, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon } from '@heroicons/react/solid';
 
-import { TodosObj, AddTodo } from '../../Types/TodosType';
+import { TodosObj } from '../../Types/TodosType';
+import TodoContext from '../../store/todo-context';
 
-type NewTodoProps = {
-  onAddTodo: AddTodo;
-};
-
-const NewTodo = (props: NewTodoProps) => {
+const NewTodo = () => {
   const [todo, setTodo] = useState('');
   const [error, showError] = useState(false);
+  const todoCtx = useContext(TodoContext);
 
   const inputHandler = (e: ChangeEvent) => {
     const input = e.target as HTMLInputElement;
@@ -33,10 +31,11 @@ const NewTodo = (props: NewTodoProps) => {
       const todoData: TodosObj = {
         todo,
         id: uuidv4(),
+        done: false,
       };
 
       // Add Todo
-      props.onAddTodo(todoData);
+      todoCtx.addTodo(todoData);
       setTodo('');
     }
   };

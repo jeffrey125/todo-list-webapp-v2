@@ -34,3 +34,11 @@ html:focus {
 .darkBG {
   background-image: url('./assets/svg-dark-bg.svg');
 }
+
+.todoCheck {
+  text-decoration: line-through;
+  text-decoration-thickness: 15%;
+}
+.todoUncheck {
+  text-decoration: none;
+}

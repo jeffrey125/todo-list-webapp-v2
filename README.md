@@ -12,4 +12,13 @@ This portfolio is meant to practice my newly acquired Typescript skill and showc
 - Typescript
 - uuid
 - Tailwind
+- Heroicons
+- Haikei
 - Framer-motion
+
+TODO
+
+- Edit Fuctionality and Check Functionality
+- Framer Motion animation
+- Dark Mode switch
+- LocalStorage of CRUD and Theme

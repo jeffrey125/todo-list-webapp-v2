@@ -1,26 +1,36 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, useContext } from 'react';
 import { CheckIcon, PencilIcon, TrashIcon } from '@heroicons/react/solid';
+
+import { TodosObj } from '../../Types/TodosType';
+import TodoContext from '../../store/todo-context';
 
 type TodoProps = {
   id: string;
-  todo: string;
+  todo: TodosObj;
 };
 
 const Todo = ({ todo, id }: TodoProps) => {
-  const doneHandler = (_: MouseEvent) => {
-    console.log(id);
+  const todoCtx = useContext(TodoContext);
+
+  const strikeTodo = todo.done ? 'todoCheck' : 'todoUncheck';
+
+  const doneHandler = () => {
+    return todoCtx.checkTodo(id);
   };
+
   const editHandler = (_: MouseEvent) => {
     console.log(id);
   };
-  const deleteHandler = (_: MouseEvent) => {
-    console.log(id);
+  const deleteHandler = () => {
+    todoCtx.removeTodo(id);
   };
 
   return (
     <div className="flex flex-col gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm: items-center lg:gap-0">
-      <li className="list-none break-all mx-4 sm:ml-4 sm:mx-0 sm:w-full">
-        {todo}
+      <li
+        className={`${strikeTodo} list-none break-all mx-4 sm:ml-4 sm:mx-0 sm:w-full`}
+      >
+        {todo.todo}
       </li>
       <div className="flex justify-center w-full gap-5 sm:justify-end sm:mr-4">
         <button
