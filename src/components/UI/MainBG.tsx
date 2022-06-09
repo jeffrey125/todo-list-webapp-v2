@@ -1,14 +1,21 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
+
+import ThemeContext from '../../store/theme-context';
 
 interface MainBGProps {
   children: ReactNode;
 }
 
 const MainBG = ({ children }: MainBGProps) => {
-  // TODO do dark mode logic here for BG
+  const themeCtx = useContext(ThemeContext);
+  const { theme, toggleDarkMode } = themeCtx;
+
+  const themeBG = toggleDarkMode ? 'darkBG' : 'lightBG';
 
   return (
-    <main className="spacer lightBG flex justify-center items-center w-screen h-screen">
+    <main
+      className={`spacer ${theme} ${themeBG} flex justify-center items-center w-screen h-screen transition-all duration-500`}
+    >
       {children}
     </main>
   );

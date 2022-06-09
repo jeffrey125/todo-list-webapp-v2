@@ -9,6 +9,7 @@ import {
 import { TodosObj } from '../../Types/TodosType';
 import TodoContext from '../../store/todo-context';
 import TodoButton from '../UI/TodoButton';
+import MobileEditSaveBTN from '../UI/MobileEditSaveBTN';
 
 interface TodoProps {
   id: string;
@@ -137,11 +138,11 @@ const Todo = ({ todoData, id }: TodoProps) => {
     <form className="flex items-center justify-start gap-6">
       <textarea
         value={editData.renderTodo}
-        className="resize-none rounded-lg p-2 my-2"
+        className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] dark:text-fontColor"
         rows={4}
         onChange={editChangeHandler}
       />
-      <TodoButton handler={editSubmitHandler}>
+      <TodoButton handler={editSubmitHandler} className="hidden lg:flex">
         <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
       </TodoButton>
     </form>
@@ -150,24 +151,29 @@ const Todo = ({ todoData, id }: TodoProps) => {
   );
 
   const listEditError = editError.showError && (
-    <p className="text-warningFont text-lg absolute lg:bottom-0 lg:left-0 lg:ml-4">
+    <p className="text-warningFont text-sm ml-4 sm:absolute sm:bottom-0 sm:left-0">
       {editError.message}
     </p>
   );
 
   return (
     // TODO Animate y-100 to y-0 and opacity 0 to opacity 1 ocrhestration stagger children
-    <div className="relative flex flex-col gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm: items-center lg:gap-0">
+    <div className="relative flex flex-col sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0">
       <li
-        className={`${strikeTodo} relative list-none break-all mx-4 sm:ml-4 sm:mx-0 sm:w-full`}
+        className={`${strikeTodo} mx-auto sm:relative list-none break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
       >
         {/* TODO Animate Presence and Exit*/}
         {listContent}
       </li>
       {/* TODO Fade Animation and Exit */}
-      {listEditError}
+      <div className="h-10 sm:h-0">{listEditError}</div>
       <div className="flex justify-center w-full gap-5 sm:justify-end sm:mr-4">
         {/* Button Springy effect animation */}
+        {openEditForm && (
+          <MobileEditSaveBTN handler={editSubmitHandler} className="lg:hidden">
+            <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
+          </MobileEditSaveBTN>
+        )}
         <TodoButton handler={doneHandler} disableButton={openEditForm}>
           <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
         </TodoButton>

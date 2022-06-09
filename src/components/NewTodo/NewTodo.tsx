@@ -56,7 +56,7 @@ const NewTodo = () => {
           <input
             type="text"
             id="text"
-            className="text-2xl h-12 w-full  lg:text-3xl lg:w-80 border-none rounded-lg focus: outline-none p-1"
+            className="text-2xl h-12 w-full  lg:text-3xl lg:w-80 border-none rounded-lg focus: outline-none p-1 dark:text-fontColor"
             onChange={inputHandler}
             value={todo}
           />
