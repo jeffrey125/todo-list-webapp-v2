@@ -7,10 +7,11 @@
 DARK BG - #060e14
 DARK BG Primary - #13293b
 DARK BG Pallete1 - #143831
+FONT GRAY - #000000
 */
 
 html {
-  color: #393e41;
+  color: #000000;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
