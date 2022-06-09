@@ -48,9 +48,15 @@ const todoReducer = (
   }
 
   if (action.type === 'EDIT') {
-    const updatedArr = state.filter((todo) => todo.id !== action.payload.id);
+    const editedArr = state.map((todo) => {
+      if (todo.id === action.payload.id) {
+        return action.payload;
+      }
 
-    return [...updatedArr, action.payload];
+      return todo;
+    });
+
+    return editedArr;
   }
 
   if (action.type === 'CHECK') {

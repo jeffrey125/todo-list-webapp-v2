@@ -10,7 +10,9 @@ function App() {
   const todosCtx = useContext(TodoContext);
 
   return (
+    // TODO Motion div opacity
     <MainBG>
+      {/* TODO Motion div opacity */}
       <Card>
         {/* <button className="bg-palette1 p-2 mb-2 rounded-xl w-1/2 place-self-center">
           Toggle Dark Mode
