@@ -16,9 +16,18 @@ This portfolio is meant to practice my newly acquired Typescript skill and showc
 - Haikei
 - Framer-motion
 
+### Journey for this project
+
+- (06/06/2022) I first initialized the project as a test practice for my React-TS, so I set the global CSS setting, support for CSS module for TS and added a reusable Card component to be used by my Todo App, at this time I also added the new todo functionality
+
+- (06/07/2022) I created the button for each to-do and style my card component, but this time I decided that this To-do-app will be the upgrade for my very first project which is my to-do app that is made on Vanilla JS with a MVC architecture. So I decided to ramp it up and migrated my style to tailwind-css and my animation to framer-motion, I also downloaded the UUID for each to-do to have a unique ID so that I can select them on my LocalStorage. I also implemented the mobile query for this app as a mobile first design.
+
+- (06/08/2022) I decided to revamp my business logic of my to-do app and use the useContext hook for it, I made the context and provider component with it and also the useReducer function to update the state of the context.
+
+- (06/09/2022) The business logic is already done this app has now complete CRUD functionality and it is connected in localStorage already, I also change the font color to have a better accessiblity for it, also I made a reusable Todo Button to make my code DRY. By this time I'm starting to implement the animations for my to-do-app
+
 TODO
 
-- Edit Fuctionality and Check Functionality
 - Framer Motion animation
 - Dark Mode switch
 - LocalStorage of CRUD and Theme
