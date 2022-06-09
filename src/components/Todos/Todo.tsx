@@ -141,13 +141,9 @@ const Todo = ({ todoData, id }: TodoProps) => {
         rows={4}
         onChange={editChangeHandler}
       />
-      <button
-        onClick={editSubmitHandler}
-        className="group flex justify-center items-center border-none h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:shadow  focus:bg-palette1Shade focus:shadow active:bg-palette1Shade active:shadow disabled:bg-slate-600 disabled:cursor-not-allowed"
-        disabled={editError.showError}
-      >
+      <TodoButton handler={editSubmitHandler}>
         <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
-      </button>
+      </TodoButton>
     </form>
   ) : (
     todo
