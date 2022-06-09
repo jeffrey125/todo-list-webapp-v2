@@ -3,9 +3,9 @@ import { useReducer, useEffect, ReactElement } from 'react';
 import todoReducer, { initTodosState, todoStateInit } from './TodoReducer';
 import TodoContext, { TodoContextType } from './todo-context';
 
-type TodoProviderProps = {
+interface TodoProviderProps {
   children: ReactElement;
-};
+}
 
 const TodoProvider = ({ children }: TodoProviderProps) => {
   const [todoState, dispatchTodoAction] = useReducer(

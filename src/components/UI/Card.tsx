@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-type CardProps = {
+interface CardProps {
   children: ReactNode;
-};
+}
 
 const Card = ({ children }: CardProps) => {
   return (

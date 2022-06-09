@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-type MainBGProps = {
+interface MainBGProps {
   children: ReactNode;
-};
+}
 
 const MainBG = ({ children }: MainBGProps) => {
   // TODO do dark mode logic here for BG
