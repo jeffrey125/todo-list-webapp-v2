@@ -48,43 +48,63 @@ const iconVariant = {
 
 const ThemeSwitcher = () => {
   const themeCtx = useContext(ThemeContext);
-  const { toggleDarkMode, setToggleDarkMode } = themeCtx;
+  const { isDarkMode, setToggleDarkMode } = themeCtx;
 
   const controls = useAnimation();
 
-  const themeButtonIcon = toggleDarkMode ? (
-    <motion.div
-      className="flex items-center justify-center"
-      key="moon"
-      initial="hidden"
-      animate="visible"
-      exit="exitIcon"
-      variants={iconVariant}
+  // Theme button handlers
+  const lightModeHandler = () => {
+    setToggleDarkMode({ theme: 'light', isDarkMode: !isDarkMode });
+  };
+
+  const darkModeHandler = () => {
+    setToggleDarkMode({ theme: 'dark', isDarkMode: !isDarkMode });
+  };
+
+  // Theme button switcher
+  const themeButtonIcon = isDarkMode ? (
+    <motion.button
+      variants={themeVariant}
+      animate={controls}
+      onClick={lightModeHandler}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1`}
     >
-      <MoonIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-darkBG" />
-    </motion.div>
+      <motion.div
+        className="flex items-center justify-center"
+        key="moon"
+        initial="hidden"
+        animate="visible"
+        exit="exitIcon"
+        variants={iconVariant}
+      >
+        <MoonIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-darkBG" />
+      </motion.div>
+    </motion.button>
   ) : (
-    <motion.div
-      className="flex items-center justify-center"
-      key="sun"
-      initial="hidden"
-      animate="visible"
-      exit="exitIcon"
-      variants={iconVariant}
+    <motion.button
+      variants={themeVariant}
+      animate={controls}
+      onClick={darkModeHandler}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1`}
     >
-      <SunIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightBG" />
-    </motion.div>
+      <motion.div
+        key="sun"
+        initial="hidden"
+        animate="visible"
+        exit="exitIcon"
+        variants={iconVariant}
+      >
+        <SunIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightBG" />
+      </motion.div>
+    </motion.button>
   );
 
-  const themeButtonBG = toggleDarkMode ? 'bg-[#19364f]' : 'bg-lightBG';
+  // Theme switcher animation and BG
+  const themeButtonBG = isDarkMode ? 'bg-[#19364f]' : 'bg-lightBG';
 
   useEffect(() => {
-    toggleDarkMode ? controls.start('switchOn') : controls.start('switchOff');
-  }, [toggleDarkMode, controls]);
-
-  const themeToggleHandler = () => {
-    setToggleDarkMode(!toggleDarkMode);
-  };
+    isDarkMode ? controls.start('switchOn') : controls.start('switchOff');
+  }, [isDarkMode, controls]);
 
   return (
     <div className="flex items-center gap-4 mb-4">
@@ -92,14 +112,7 @@ const ThemeSwitcher = () => {
       <div
         className={`p-2 w-[8rem] ${themeButtonBG} rounded-full  transition-all duration-500`}
       >
-        <motion.button
-          variants={themeVariant}
-          animate={controls}
-          onClick={themeToggleHandler}
-          className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1`}
-        >
-          <AnimatePresence exitBeforeEnter>{themeButtonIcon}</AnimatePresence>
-        </motion.button>
+        <AnimatePresence exitBeforeEnter>{themeButtonIcon}</AnimatePresence>
       </div>
     </div>
   );

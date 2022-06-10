@@ -1,14 +1,20 @@
 import { createContext } from 'react';
 
+interface ToggleDarkModeObject {
+  theme: string;
+  isDarkMode: boolean;
+}
+type ToggleDarkModeType = (userTheme: ToggleDarkModeObject) => void;
+
 export interface ThemeContextType {
   theme: string;
-  toggleDarkMode: boolean;
-  setToggleDarkMode: (prevState: boolean) => void;
+  isDarkMode: boolean;
+  setToggleDarkMode: ToggleDarkModeType;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
-  toggleDarkMode: false,
+  isDarkMode: false,
   setToggleDarkMode: () => {},
 });
 

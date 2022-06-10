@@ -2,60 +2,45 @@ import { useState, useEffect, ReactElement } from 'react';
 
 import ThemeContext, { ThemeContextType } from './theme-context';
 
+interface ThemeTypes {
+  isDarkMode: boolean;
+  theme: string;
+}
 interface ThemeProviderProps {
   children: ReactElement;
 }
 
-interface UserTheme {
-  theme: string;
-  isDarkMode: boolean;
-}
-
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const userTheme = localStorage.getItem('theme');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [theme, setTheme] = useState<string>('light');
+  const storageUserTheme: ThemeTypes = JSON.parse(
+    localStorage.getItem('theme')!
+  );
 
-  // TODO use 2 use effect 1 for setting local and 1 for getting local
+  const [userTheme, setUserTheme] = useState<ThemeTypes>(storageUserTheme);
+
   useEffect(() => {
-    if (typeof userTheme !== 'string') {
-      const initUserTheme: UserTheme = {
-        theme: 'light',
-        isDarkMode: false,
-      };
+    if (typeof storageUserTheme !== 'object') return;
 
-      localStorage.setItem('theme', JSON.stringify(initUserTheme));
-      setTheme(initUserTheme.theme);
-      setIsDarkMode(initUserTheme.isDarkMode);
+    if (storageUserTheme === null) {
+      return localStorage.setItem(
+        'theme',
+        JSON.stringify({ isDarkMode: false, theme: 'light' })
+      );
     }
 
-    if (typeof userTheme === 'string') {
-      const userThemeOption = JSON.parse(userTheme);
-      console.log(userThemeOption);
-      if (userThemeOption.theme === 'dark') {
-        const userLightMode: UserTheme = {
-          theme: 'light',
-          isDarkMode: false,
-        };
-        return localStorage.setItem('theme', JSON.stringify(userLightMode));
-      }
-
-      if (userThemeOption.theme === 'light') {
-        const userDarkMode: UserTheme = {
-          theme: 'light',
-          isDarkMode: true,
-        };
-
-        return localStorage.setItem('theme', JSON.stringify(userDarkMode));
-      }
+    if (
+      (storageUserTheme.isDarkMode !== null ||
+        storageUserTheme.isDarkMode !== undefined) &&
+      (storageUserTheme.theme !== null || storageUserTheme.theme !== undefined)
+    ) {
+      return localStorage.setItem('theme', JSON.stringify(userTheme));
     }
-  }, [userTheme, isDarkMode]);
+  }, [storageUserTheme, userTheme]);
 
   const themeContext: ThemeContextType = {
-    theme,
-    toggleDarkMode: isDarkMode,
-    setToggleDarkMode: (prevState: boolean) => {
-      setIsDarkMode(prevState);
+    theme: userTheme?.theme,
+    isDarkMode: userTheme?.isDarkMode,
+    setToggleDarkMode: (userTheme) => {
+      setUserTheme(userTheme);
     },
   };
 

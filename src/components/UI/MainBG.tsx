@@ -8,13 +8,15 @@ interface MainBGProps {
 
 const MainBG = ({ children }: MainBGProps) => {
   const themeCtx = useContext(ThemeContext);
-  const { theme, toggleDarkMode } = themeCtx;
+  const { theme, isDarkMode } = themeCtx;
 
-  const themeBG = toggleDarkMode ? 'darkBG' : 'lightBG';
+  console.log(theme);
+
+  const themeBG = isDarkMode ? 'darkBG' : 'lightBG';
 
   return (
     <main
-      className={`spacer ${theme} ${themeBG} flex justify-center items-center w-screen h-screen transition-all duration-500`}
+      className={`spacer ${theme} ${themeBG} dark:bg-darkBG bg-lightBG flex justify-center items-center w-screen h-screen transition-all duration-500`}
     >
       {children}
     </main>
