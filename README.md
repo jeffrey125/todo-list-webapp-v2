@@ -24,7 +24,8 @@ This is an upgrade to my first To-do app which is built on Vanilla JS with an MV
 
 - (06/09/2022) The business logic is already done this app has now complete CRUD functionality and it is connected in localStorage already, I also change the font color to have a better accessiblity for it, also I made a reusable Todo Button to make my code DRY. By this time I'm starting to implement the animations for my to-do-app, I also implemented the Theme switcher for this app.
 
+- (06/10/2022) I added the animation using framer-motion and I planned to add the reorder animation using it
+
 TODO
 
-- LocalStorage Theme
-- Framer Motion animation
+- Framer-motion Reorder animation
