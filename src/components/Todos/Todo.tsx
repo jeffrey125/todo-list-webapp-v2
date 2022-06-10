@@ -135,10 +135,10 @@ const Todo = ({ todoData, id }: TodoProps) => {
   };
 
   const listContent = openEditForm ? (
-    <form className="flex items-center justify-start gap-6">
+    <form className="flex items-center justify-start gap-5">
       <textarea
         value={editData.renderTodo}
-        className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] dark:text-fontColor"
+        className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] transition-colors duration-300outline-primaryColor dark:text-lightFontColor dark:bg-[#19364f]"
         rows={4}
         onChange={editChangeHandler}
       />

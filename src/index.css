@@ -16,9 +16,6 @@ html {
   margin: 0;
   font-family: 'Rubik', sans-serif;
 }
-html:focus {
-  outline: none;
-}
 
 .spacer {
   aspect-ratio: 960/300;
