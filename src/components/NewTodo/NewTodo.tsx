@@ -7,7 +7,7 @@ import TodoContext from '../../store/todo-context';
 
 const NewTodo = () => {
   const [todo, setTodo] = useState('');
-  const [error, showError] = useState(false);
+  const [showError, setShowError] = useState(false);
   const todoCtx = useContext(TodoContext);
 
   const inputHandler = (e: ChangeEvent) => {
@@ -16,16 +16,16 @@ const NewTodo = () => {
     setTodo(userInput);
 
     if (userInput.length !== 0) {
-      showError(false);
+      setShowError(false);
     }
   };
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     if (todo.length === 0) {
-      showError(true);
+      setShowError(true);
     } else {
-      showError(false);
+      setShowError(false);
 
       // Todo Data
       const todoData: TodosObj = {
@@ -60,13 +60,13 @@ const NewTodo = () => {
             onChange={inputHandler}
             value={todo}
           />
-          {error && (
+          {showError && (
             <p className="absolute bottom-[-5px] left-0 text-sm text-red-700">
               Please Input a Valid Todo
             </p>
           )}
 
-          <button className="group flex items-center justify-center border-none font-medium h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-white hover:shadow active:bg-palette1Shade active:text-white active:shadow focus:bg-palette1Shade focus:text-white focus:shadow">
+          <button className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-lightFontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-fontColor hover:shadow active:bg-palette1Shade active:text-fontColor active:shadow focus:bg-palette1Shade focus:text-fontColor focus:shadow dark:text-fontColor dark:hover:text-lightFontColor dark:active:text-lightFontColor">
             <span className="hidden sm:block">Add Todo</span>
             <PlusIcon className="block sm:hidden h-5 w-5" />
           </button>
