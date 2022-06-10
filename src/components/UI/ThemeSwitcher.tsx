@@ -76,7 +76,7 @@ const ThemeSwitcher = () => {
     </motion.div>
   );
 
-  const themeButtonBG = toggleDarkMode ? 'bg-darkBG' : 'bg-lightBG';
+  const themeButtonBG = toggleDarkMode ? 'bg-[#19364f]' : 'bg-lightBG';
 
   useEffect(() => {
     toggleDarkMode ? controls.start('switchOn') : controls.start('switchOff');

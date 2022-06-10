@@ -143,7 +143,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
         onChange={editChangeHandler}
       />
       <TodoButton handler={editSubmitHandler} className="hidden lg:flex">
-        <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
+        <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
       </TodoButton>
     </form>
   ) : (
@@ -151,7 +151,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
   );
 
   const listEditError = editError.showError && (
-    <p className="text-warningFont text-sm ml-4 sm:absolute sm:bottom-0 sm:left-0">
+    <p className="text-red-700 text-sm ml-4 sm:absolute sm:bottom-0 sm:left-0">
       {editError.message}
     </p>
   );
@@ -171,17 +171,17 @@ const Todo = ({ todoData, id }: TodoProps) => {
         {/* Button Springy effect animation */}
         {openEditForm && (
           <MobileEditSaveBTN handler={editSubmitHandler} className="lg:hidden">
-            <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
+            <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
           </MobileEditSaveBTN>
         )}
         <TodoButton handler={doneHandler} disableButton={openEditForm}>
-          <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
+          <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 group-disabled:fill-fontColor dark:fill-fontColor dark:group-hover:fill-lightFontColor dark:group-disabled:fill-lightFontColor" />
         </TodoButton>
         <TodoButton handler={showEditInputHandler}>
-          <PencilIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300 group-disabled:fill-white" />
+          <PencilIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
         <TodoButton handler={deleteHandler}>
-          <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  group-hover:fill-white transition-all duration-300" />
+          <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
       </div>
     </div>
