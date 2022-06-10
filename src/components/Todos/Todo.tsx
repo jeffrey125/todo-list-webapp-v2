@@ -170,7 +170,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
     >
       <textarea
         value={editData.renderTodo}
-        className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] transition-colors duration-300outline-primaryColor dark:text-lightFontColor dark:bg-[#19364f]"
+        className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] transition-colors duration-300outline-primaryColor outline-primaryColor dark:text-lightFontColor dark:bg-[#19364f]"
         rows={4}
         onChange={editChangeHandler}
       />
