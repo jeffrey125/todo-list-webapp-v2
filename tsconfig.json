@@ -17,6 +17,7 @@
     "noEmit": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "jsx": "react-jsx"
