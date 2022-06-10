@@ -1,64 +1,65 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { SunIcon, MoonIcon } from '@heroicons/react/solid';
 
 import ThemeContext from '../../store/theme-context';
 
-const THEME_DURATION = 0.5 as const;
-
-const themeVariant = {
-  switchOn: {
-    x: `4.5rem`,
-    transition: {
-      duration: THEME_DURATION,
-      type: 'spring',
-      bounce: 0.4,
-    },
-  },
-  switchOff: {
-    x: 0,
-    transition: {
-      duration: THEME_DURATION,
-      type: 'spring',
-      bounce: 0.4,
-    },
-  },
-};
-
-const iconVariant = {
-  hidden: {
-    rotate: 180,
-  },
-  exitIcon: {
-    opacity: 0,
-    rotate: -180,
-    transition: {
-      type: 'tween',
-      duration: 0.3,
-    },
-  },
-  visible: {
-    rotate: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.3,
-    },
-  },
-};
-
 const ThemeSwitcher = () => {
+  const THEME_DURATION = 0.5 as const;
   const themeCtx = useContext(ThemeContext);
   const { isDarkMode, setToggleDarkMode } = themeCtx;
+
+  const themeVariant = {
+    switchOn: {
+      x: `4.5rem`,
+      transition: {
+        duration: THEME_DURATION,
+        type: 'spring',
+        bounce: 0.4,
+      },
+    },
+    switchOff: {
+      x: `0rem`,
+      transition: {
+        duration: THEME_DURATION,
+        type: 'spring',
+        bounce: 0.4,
+      },
+    },
+  };
+
+  const iconVariant = {
+    hidden: {
+      rotate: 180,
+    },
+    exitIcon: {
+      opacity: 0,
+      rotate: -180,
+      transition: {
+        type: 'tween',
+        duration: 0.3,
+      },
+    },
+    visible: {
+      rotate: 0,
+      transition: {
+        type: 'tween',
+        duration: 0.3,
+      },
+    },
+  };
 
   const controls = useAnimation();
 
   // Theme button handlers
   const lightModeHandler = () => {
     setToggleDarkMode({ theme: 'light', isDarkMode: !isDarkMode });
+    controls.start('switchOff');
   };
 
   const darkModeHandler = () => {
     setToggleDarkMode({ theme: 'dark', isDarkMode: !isDarkMode });
+    controls.start('switchOn');
   };
 
   // Theme button switcher
@@ -67,7 +68,7 @@ const ThemeSwitcher = () => {
       variants={themeVariant}
       animate={controls}
       onClick={lightModeHandler}
-      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1`}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-[4.5rem]`}
     >
       <motion.div
         className="flex items-center justify-center"
@@ -85,7 +86,7 @@ const ThemeSwitcher = () => {
       variants={themeVariant}
       animate={controls}
       onClick={darkModeHandler}
-      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1`}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-0`}
     >
       <motion.div
         key="sun"
@@ -101,10 +102,6 @@ const ThemeSwitcher = () => {
 
   // Theme switcher animation and BG
   const themeButtonBG = isDarkMode ? 'bg-[#19364f]' : 'bg-lightBG';
-
-  useEffect(() => {
-    isDarkMode ? controls.start('switchOn') : controls.start('switchOff');
-  }, [isDarkMode, controls]);
 
   return (
     <div className="flex items-center gap-4 mb-4">

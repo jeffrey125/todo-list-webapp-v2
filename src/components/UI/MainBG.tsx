@@ -10,8 +10,6 @@ const MainBG = ({ children }: MainBGProps) => {
   const themeCtx = useContext(ThemeContext);
   const { theme, isDarkMode } = themeCtx;
 
-  console.log(theme);
-
   const themeBG = isDarkMode ? 'darkBG' : 'lightBG';
 
   return (
