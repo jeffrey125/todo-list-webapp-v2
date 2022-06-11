@@ -32,6 +32,9 @@ const TodoProvider = ({ children }: TodoProviderProps) => {
     checkTodo: (id) => {
       dispatchTodoAction({ type: 'CHECK', payload: id });
     },
+    reorderTodos: (todos) => {
+      dispatchTodoAction({ type: 'REORDER', payload: todos });
+    },
   };
 
   return (

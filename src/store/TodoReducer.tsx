@@ -4,7 +4,8 @@ type ACTIONTYPE =
   | { type: 'ADD'; payload: TodosObj }
   | { type: 'REMOVE'; payload: string }
   | { type: 'EDIT'; payload: TodosObj }
-  | { type: 'CHECK'; payload: string };
+  | { type: 'CHECK'; payload: string }
+  | { type: 'REORDER'; payload: TodosObj[] };
 
 type TodoStateInitType = () => typeof initTodosState;
 
@@ -71,6 +72,10 @@ const todoReducer = (
     });
 
     return checkTodo;
+  }
+
+  if (action.type === 'REORDER') {
+    return action.payload;
   }
 
   return initTodosState;

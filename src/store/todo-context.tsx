@@ -8,6 +8,7 @@ export interface TodoContextType {
   editTodo: (editedTodo: TodosObj) => void;
   checkTodo: (id: string) => void;
   removeTodo: (id: string) => void;
+  reorderTodos: (todos: TodosObj[]) => void;
 }
 
 const TodoContext = createContext<TodoContextType>({
@@ -16,6 +17,7 @@ const TodoContext = createContext<TodoContextType>({
   editTodo: () => {},
   removeTodo: () => {},
   checkTodo: () => {},
+  reorderTodos: () => {},
 });
 
 export default TodoContext;
