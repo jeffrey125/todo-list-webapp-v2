@@ -4,51 +4,50 @@ import { SunIcon, MoonIcon } from '@heroicons/react/solid';
 
 import ThemeContext from '../../store/theme-context';
 
+const THEME_DURATION = 0.5 as const;
+const themeVariant = {
+  switchOn: {
+    x: `4.5rem`,
+    transition: {
+      duration: THEME_DURATION,
+      type: 'spring',
+      bounce: 0.4,
+    },
+  },
+  switchOff: {
+    x: `0rem`,
+    transition: {
+      duration: THEME_DURATION,
+      type: 'spring',
+      bounce: 0.4,
+    },
+  },
+};
+
+const iconVariant = {
+  hidden: {
+    rotate: 180,
+  },
+  exitIcon: {
+    opacity: 0,
+    rotate: -180,
+    transition: {
+      type: 'tween',
+      duration: 0.3,
+    },
+  },
+  visible: {
+    rotate: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.3,
+    },
+  },
+};
+
 const ThemeSwitcher = () => {
-  const THEME_DURATION = 0.5 as const;
   const themeCtx = useContext(ThemeContext);
   const { isDarkMode, setToggleDarkMode } = themeCtx;
-
-  const themeVariant = {
-    switchOn: {
-      x: `4.5rem`,
-      transition: {
-        duration: THEME_DURATION,
-        type: 'spring',
-        bounce: 0.4,
-      },
-    },
-    switchOff: {
-      x: `0rem`,
-      transition: {
-        duration: THEME_DURATION,
-        type: 'spring',
-        bounce: 0.4,
-      },
-    },
-  };
-
-  const iconVariant = {
-    hidden: {
-      rotate: 180,
-    },
-    exitIcon: {
-      opacity: 0,
-      rotate: -180,
-      transition: {
-        type: 'tween',
-        duration: 0.3,
-      },
-    },
-    visible: {
-      rotate: 0,
-      transition: {
-        type: 'tween',
-        duration: 0.3,
-      },
-    },
-  };
-
   const controls = useAnimation();
 
   // Theme button handlers

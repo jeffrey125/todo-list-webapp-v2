@@ -18,8 +18,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [userTheme, setUserTheme] = useState<ThemeTypes>(storageUserTheme);
 
   useEffect(() => {
-    if (typeof storageUserTheme !== 'object') return;
-
     if (storageUserTheme === null) {
       return localStorage.setItem(
         'theme',
@@ -27,11 +25,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
       );
     }
 
-    if (
-      (storageUserTheme.isDarkMode !== null ||
-        storageUserTheme.isDarkMode !== undefined) &&
-      (storageUserTheme.theme !== null || storageUserTheme.theme !== undefined)
-    ) {
+    if (storageUserTheme !== null) {
       return localStorage.setItem('theme', JSON.stringify(userTheme));
     }
   }, [storageUserTheme, userTheme]);

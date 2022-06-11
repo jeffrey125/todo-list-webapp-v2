@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useContext } from 'react';
+import TodoContext from '../../store/todo-context';
+
 import Todo from './Todo';
-import TodosArr from '../../Types/TodosType';
 
 const containerVariant = {
   hidden: {
@@ -16,9 +18,12 @@ const containerVariant = {
   },
 };
 
-const Todos = ({ items }: TodosArr) => {
+const Todos = () => {
+  const todosCtx = useContext(TodoContext);
+  const items = todosCtx.todos;
+
   return (
-    <div className="overflow-hidden w-full h-3/4 border-2 border-primaryTint2 rounded-2xl sm:h-[85%]">
+    <div className="overflow-hidden w-full h-[70%] border-2 border-primaryTint2 rounded-2xl sm:h-[85%]">
       <motion.ul
         animate="visible"
         initial="hidden"

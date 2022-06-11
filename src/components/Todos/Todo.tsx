@@ -136,7 +136,6 @@ const Todo = ({ todoData, id }: TodoProps) => {
       });
     }
 
-    // Copy the edited object and put the new todo
     const editedTodo: TodosObj = {
       ...todoData,
       todo: editData.editedTodo,
@@ -195,7 +194,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
       key="listError"
       animate="visible"
       initial="hidden"
-      exit="deleted"
+      exit="hidden"
       variants={formVariant}
       className="text-red-700 text-sm ml-4 sm:absolute sm:bottom-0 sm:left-0"
     >
@@ -204,24 +203,21 @@ const Todo = ({ todoData, id }: TodoProps) => {
   );
 
   return (
-    // TODO Animate y-100 to y-0 and opacity 0 to opacity 1 ocrhestration stagger children
-    <motion.div
+    <motion.li
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.2 }}
       variants={listVariant}
-      className="relative flex flex-col sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0"
+      className="relative flex flex-col  list-none sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0"
     >
-      <li
-        className={`${strikeTodo} mx-auto sm:relative list-none break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
+      <span
+        className={`${strikeTodo} mx-auto sm:relative break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
       >
         <AnimatePresence exitBeforeEnter>{listContent}</AnimatePresence>
-      </li>
-      {/* TODO Fade Animation and Exit */}
-      <div className="h-10 sm:h-0">
+      </span>
+      <span className="h-10 sm:h-0">
         <AnimatePresence exitBeforeEnter>{listEditError}</AnimatePresence>
-      </div>
+      </span>
       <div className="flex justify-center w-full gap-5 sm:justify-end sm:mr-4">
-        {/* Button Springy effect animation */}
         {openEditForm && (
           <MobileEditSaveBTN handler={editSubmitHandler} className="lg:hidden">
             <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
@@ -237,7 +233,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
       </div>
-    </motion.div>
+    </motion.li>
   );
 };
 
