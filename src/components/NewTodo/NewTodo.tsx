@@ -1,11 +1,15 @@
-import { FormEvent, useState, ChangeEvent, useContext } from 'react';
+import { FormEvent, useState, ChangeEvent, useContext, RefObject } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon } from '@heroicons/react/solid';
 
 import { TodosObj } from '../../Types/TodosType';
 import TodoContext from '../../store/todo-context';
 
-const NewTodo = () => {
+interface NewTodoProps {
+  dummyDiv: RefObject<HTMLDivElement>;
+}
+
+const NewTodo = ({ dummyDiv }: NewTodoProps) => {
   const [todo, setTodo] = useState('');
   const [showError, setShowError] = useState(false);
   const todoCtx = useContext(TodoContext);
@@ -20,7 +24,7 @@ const NewTodo = () => {
     }
   };
 
-  const submitHandler = (e: FormEvent) => {
+  const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
     if (todo.length === 0) {
       setShowError(true);
@@ -34,9 +38,13 @@ const NewTodo = () => {
         done: false,
       };
 
-      // Add Todo
-      todoCtx.addTodo(todoData);
+      // Add Todo and make this await so that my scrollintoview wait the addTodo to render and scroll to the latest todo data
+      await todoCtx.addTodo(todoData);
       setTodo('');
+
+      // Scroll into view on the latest todo
+      const divContainer = dummyDiv.current! as HTMLDivElement;
+      divContainer.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
