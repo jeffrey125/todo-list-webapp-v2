@@ -24,7 +24,9 @@ This is an upgrade to my first To-do app which is built on Vanilla JS with an MV
 
 - (06/09/2022) The business logic is already done this app has now complete CRUD functionality and it is connected in localStorage already, I also change the font color to have a better accessiblity for it, also I made a reusable Todo Button to make my code DRY. By this time I'm starting to implement the animations for my to-do-app, I also implemented the Theme switcher for this app.
 
-- (06/10/2022) I added the animation using framer-motion and I planned to add the reorder animation using it
+- (06/10/2022) I added the animation using framer-motion and I planned to add the reorder animation using it.
+
+- (06/11/2022) I added a scrollIntoView functionality whenever a todo data is added/rendered, I made a dummy div and put it in the bottom part of my unordered list and put a useRef on it so that whenever a user enters a new data it will point to that empty div. So I lifted up the useRef and passed it down onto my NewTodo component and on my submitHandler I utilized the async/await keyword so that my scrollIntoView will wait the data component to render so that it will scroll in to the latest data.
 
 TODO
 

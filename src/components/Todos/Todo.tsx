@@ -4,6 +4,7 @@ import {
   PencilIcon,
   TrashIcon,
   SaveIcon,
+  SelectorIcon,
 } from '@heroicons/react/solid';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -217,7 +218,8 @@ const Todo = ({ todoData, id }: TodoProps) => {
       <span className="h-10 sm:h-0">
         <AnimatePresence exitBeforeEnter>{listEditError}</AnimatePresence>
       </span>
-      <div className="flex justify-center w-full gap-5 sm:justify-end sm:mr-4">
+
+      <div className="flex justify-center w-full gap-3 sm:gap-5 items-center sm:justify-end sm:mr-4">
         {openEditForm && (
           <MobileEditSaveBTN handler={editSubmitHandler} className="lg:hidden">
             <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
@@ -232,6 +234,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
         <TodoButton handler={deleteHandler}>
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
+        <SelectorIcon className="cursor-grab h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor" />
       </div>
     </motion.li>
   );
