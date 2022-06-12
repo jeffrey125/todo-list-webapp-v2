@@ -67,11 +67,11 @@ const ThemeSwitcher = () => {
       variants={themeVariant}
       animate={controls}
       onClick={lightModeHandler}
-      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-[4.5rem] outline-none focus:bg-palette1Shade`}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-[4.5rem] outline-none transition-colors duration-300 focus:bg-palette1Shade`}
     >
       <motion.div
-        className="flex items-center justify-center"
         key="moon"
+        className="flex items-center justify-center"
         initial="hidden"
         animate="visible"
         exit="exitIcon"
@@ -85,10 +85,11 @@ const ThemeSwitcher = () => {
       variants={themeVariant}
       animate={controls}
       onClick={darkModeHandler}
-      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-0 outline-none focus:bg-palette1Shade`}
+      className={`bg-palette1 p-2 rounded-full w-10 h-10 flex justify-center items-center border-2 border-solid border-palette1 translate-x-0 outline-none transition-colors duration-300 focus:bg-palette1Shade`}
     >
       <motion.div
         key="sun"
+        className="flex items-center justify-center"
         initial="hidden"
         animate="visible"
         exit="exitIcon"
