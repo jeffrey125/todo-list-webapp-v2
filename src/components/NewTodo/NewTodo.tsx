@@ -39,7 +39,11 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
       };
 
       // Add Todo and make this await so that my scrollintoview wait the addTodo to render and scroll to the latest todo data
-      await todoCtx.addTodo(todoData);
+      const newTodo = new Promise<void>((resolve) =>
+        resolve(todoCtx.addTodo(todoData))
+      );
+
+      await newTodo;
       setTodo('');
 
       // Scroll into view on the latest todo
