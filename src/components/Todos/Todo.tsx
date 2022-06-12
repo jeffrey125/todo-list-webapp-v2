@@ -204,19 +204,17 @@ const Todo = ({ todoData, id }: TodoProps) => {
 
   const y = useMotionValue(0);
   const boxShadow = useRaisedShadow(y);
-  const dragControls = useDragControls();
+  // const dragControls = useDragControls();
 
   return (
     <Reorder.Item
-      dragListener={false}
-      dragControls={dragControls}
       value={todoData}
       id={id}
       style={{ y, boxShadow }}
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.2 }}
       variants={listVariant}
-      className="relative flex flex-col  list-none sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0 select-none"
+      className="relative flex flex-col list-none w-full border-b-2 border-primaryTint2 py-4 bg-lightFontColor rounded-xl dark:bg-darkPrimary dark:border-darkPallete1 sm:gap-5 sm:flex-row sm:justify-between sm:items-center lg:gap-0 transition-colors duration-300"
     >
       <span
         className={`${strikeTodo} mx-auto sm:relative break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
@@ -242,10 +240,12 @@ const Todo = ({ todoData, id }: TodoProps) => {
         <TodoButton handler={deleteHandler}>
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
-        <SelectorIcon
+
+        {/* TODO Uncomment this when Framer fix the issue */}
+        {/* <SelectorIcon
           className="cursor-grab h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor"
           onPointerDown={(e) => dragControls.start(e)}
-        />
+        /> */}
       </div>
     </Reorder.Item>
   );

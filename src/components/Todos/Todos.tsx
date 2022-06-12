@@ -34,7 +34,7 @@ const Todos = ({ dummyDiv }: TodosProps) => {
         animate="visible"
         initial="hidden"
         variants={containerVariant}
-        className="text-2xl font-normal overflow-y-scroll flex flex-col h-full"
+        className="text-2xl font-normal overflow-y-scroll flex flex-col h-full gap-4 pt-4"
         layoutScroll
       >
         <AnimatePresence>
