@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, Reorder } from 'framer-motion';
 import { useContext, RefObject } from 'react';
 
 import TodoContext from '../../store/todo-context';
@@ -28,11 +28,14 @@ const Todos = ({ dummyDiv }: TodosProps) => {
 
   return (
     <div className="overflow-hidden w-full h-[70%] border-2 border-primaryTint2 rounded-2xl sm:h-[100%]">
-      <motion.ul
+      <Reorder.Group
+        values={items}
+        onReorder={todosCtx.reorderTodos}
         animate="visible"
         initial="hidden"
         variants={containerVariant}
         className="text-2xl font-normal overflow-y-scroll flex flex-col h-full"
+        layoutScroll
       >
         <AnimatePresence>
           {items.map((item) => (
@@ -40,7 +43,7 @@ const Todos = ({ dummyDiv }: TodosProps) => {
           ))}
           <div ref={dummyDiv} />
         </AnimatePresence>
-      </motion.ul>
+      </Reorder.Group>
     </div>
   );
 };

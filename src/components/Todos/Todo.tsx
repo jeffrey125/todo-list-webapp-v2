@@ -6,8 +6,15 @@ import {
   SaveIcon,
   SelectorIcon,
 } from '@heroicons/react/solid';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AnimatePresence,
+  useMotionValue,
+  motion,
+  Reorder,
+  useDragControls,
+} from 'framer-motion';
 
+import { useRaisedShadow } from '../../hooks/use-raised-shadow';
 import { TodosObj } from '../../Types/TodosType';
 import TodoContext from '../../store/todo-context';
 import TodoButton from '../UI/TodoButton';
@@ -162,8 +169,6 @@ const Todo = ({ todoData, id }: TodoProps) => {
   const listContent = openEditForm ? (
     <motion.form
       key="editForm"
-      animate="visible"
-      initial="hidden"
       exit="hidden"
       variants={formVariant}
       className="flex items-center justify-start gap-5"
@@ -179,13 +184,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
       </TodoButton>
     </motion.form>
   ) : (
-    <motion.span
-      key="listContent"
-      animate="visible"
-      initial="hidden"
-      exit="hidden"
-      variants={formVariant}
-    >
+    <motion.span key="listContent" exit="hidden" variants={formVariant}>
       {todo}
     </motion.span>
   );
@@ -203,12 +202,21 @@ const Todo = ({ todoData, id }: TodoProps) => {
     </motion.p>
   );
 
+  const y = useMotionValue(0);
+  const boxShadow = useRaisedShadow(y);
+  const dragControls = useDragControls();
+
   return (
-    <motion.li
+    <Reorder.Item
+      dragListener={false}
+      dragControls={dragControls}
+      value={todoData}
+      id={id}
+      style={{ y, boxShadow }}
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.2 }}
       variants={listVariant}
-      className="relative flex flex-col  list-none sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0"
+      className="relative flex flex-col  list-none sm:gap-5 w-full border-b-2 border-primaryTint2 py-4 sm:flex-row sm:justify-between sm:items-center lg:gap-0 select-none"
     >
       <span
         className={`${strikeTodo} mx-auto sm:relative break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
@@ -234,9 +242,12 @@ const Todo = ({ todoData, id }: TodoProps) => {
         <TodoButton handler={deleteHandler}>
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
-        <SelectorIcon className="cursor-grab h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor" />
+        <SelectorIcon
+          className="cursor-grab h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor"
+          onPointerDown={(e) => dragControls.start(e)}
+        />
       </div>
-    </motion.li>
+    </Reorder.Item>
   );
 };
 
