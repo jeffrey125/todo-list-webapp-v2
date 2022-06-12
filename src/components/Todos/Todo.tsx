@@ -4,14 +4,12 @@ import {
   PencilIcon,
   TrashIcon,
   SaveIcon,
-  SelectorIcon,
 } from '@heroicons/react/solid';
 import {
   AnimatePresence,
   useMotionValue,
   motion,
   Reorder,
-  useDragControls,
 } from 'framer-motion';
 
 import { useRaisedShadow } from '../../hooks/use-raised-shadow';
