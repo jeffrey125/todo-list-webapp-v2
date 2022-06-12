@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react';
+import { ReactNode, useContext, useState, useEffect } from 'react';
 
 import ThemeContext from '../../store/theme-context';
 
@@ -9,12 +9,19 @@ interface MainBGProps {
 const MainBG = ({ children }: MainBGProps) => {
   const themeCtx = useContext(ThemeContext);
   const { theme, isDarkMode } = themeCtx;
+  const [themeBG, setThemeBG] = useState('lightBG');
 
-  const themeBG = isDarkMode ? 'darkBG' : 'lightBG';
+  useEffect(() => {
+    if (isDarkMode) {
+      setThemeBG('darkBG');
+    } else {
+      setThemeBG('lightBG');
+    }
+  }, [isDarkMode]);
 
   return (
     <main
-      className={`spacer ${theme} ${themeBG} dark:bg-darkBG bg-lightBG flex justify-center items-center w-screen h-screen transition-all duration-500`}
+      className={`spacer ${theme} ${themeBG} bg-darkBG flex justify-center items-center w-screen h-screen transition-all duration-500`}
     >
       {children}
     </main>
