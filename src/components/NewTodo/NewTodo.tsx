@@ -77,9 +77,12 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
           </p>
         )}
 
-        <button className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-lightFontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-fontColor hover:shadow active:bg-palette1Shade active:text-fontColor active:shadow focus:bg-palette1Shade focus:text-fontColor focus:shadow dark:text-fontColor dark:hover:text-lightFontColor dark:active:text-lightFontColor outline-none dark:focus:text-lightFontColor">
+        <button
+          type="submit"
+          className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-lightFontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-fontColor hover:shadow active:bg-palette1Shade active:text-fontColor active:shadow focus:bg-palette1Shade focus:text-fontColor focus:shadow dark:text-fontColor dark:hover:text-lightFontColor dark:active:text-lightFontColor outline-none dark:focus:text-lightFontColor z-10"
+        >
           <span className="hidden sm:block">Add Todo</span>
-          <PlusIcon className="block sm:hidden h-5 w-5" />
+          <PlusIcon className="block sm:hidden h-5 w-5 z-1" />
         </button>
       </div>
     </form>
