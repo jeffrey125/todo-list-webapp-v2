@@ -1,6 +1,7 @@
 import { FormEvent, useState, ChangeEvent, useContext, RefObject } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon } from '@heroicons/react/solid';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { TodosObj } from '../../Types/TodosType';
 import TodoContext from '../../store/todo-context';
@@ -9,10 +10,25 @@ interface NewTodoProps {
   dummyDiv: RefObject<HTMLDivElement>;
 }
 
+const errorVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: 'tween',
+      duration: 0.3,
+    },
+  },
+};
+
 const NewTodo = ({ dummyDiv }: NewTodoProps) => {
   const [todo, setTodo] = useState('');
   const [showError, setShowError] = useState(false);
   const todoCtx = useContext(TodoContext);
+  const errorBorderColor: boolean | 'border-2 border-red-700' =
+    showError && 'border-2 border-red-700';
 
   const inputHandler = (e: ChangeEvent) => {
     const input = e.target as HTMLInputElement;
@@ -67,15 +83,23 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
         <input
           type="text"
           id="text"
-          className="text-2xl h-12 w-full  lg:text-3xl lg:w-80 border-none rounded-lg transition-colors duration-300 focus: outline-primaryColor p-1 dark:text-lightFontColor dark:bg-[#19364f] "
+          className={`text-2xl h-12 w-full  lg:text-3xl lg:w-80 rounded-lg ${errorBorderColor} transition-colors duration-300 focus:outline-primaryColor p-1 dark:text-lightFontColor dark:bg-[#19364f]`}
           onChange={inputHandler}
           value={todo}
         />
-        {showError && (
-          <p className="absolute bottom-[-5px] left-0 text-sm text-red-700">
-            Please Input a Valid Todo
-          </p>
-        )}
+        <AnimatePresence>
+          {showError && (
+            <motion.p
+              animate="visible"
+              initial="hidden"
+              exit="hidden"
+              variants={errorVariant}
+              className="absolute bottom-[-5px] left-0 text-sm text-red-700"
+            >
+              Please Input a Valid Todo
+            </motion.p>
+          )}
+        </AnimatePresence>
 
         <button
           aria-label="Submit New Todo"
