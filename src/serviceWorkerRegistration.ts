@@ -48,7 +48,7 @@ export function register(config?: Config) {
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
-              'worker. A Todo-lsit-webapp made by jeffrey125'
+              'worker. A Todo-lsit-webapp made by jeffrey125 for more of my projects visit my github on: https://github.com/jeffrey125?tab=repositories'
           );
         });
       } else {
