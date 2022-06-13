@@ -8,7 +8,7 @@ interface MainBGProps {
 
 const MainBG = ({ children }: MainBGProps) => {
   const themeCtx = useContext(ThemeContext);
-  const { theme, isDarkMode } = themeCtx;
+  const { isDarkMode } = themeCtx;
   const [themeBG, setThemeBG] = useState('lightBG');
 
   useEffect(() => {
@@ -20,11 +20,11 @@ const MainBG = ({ children }: MainBGProps) => {
   }, [isDarkMode]);
 
   return (
-    <main
-      className={`spacer ${theme} ${themeBG} bg-darkBG flex justify-center items-center w-screen h-screen transition-all duration-500`}
+    <section
+      className={`spacer ${themeBG} bg-darkBG flex justify-center items-center w-screen h-screen transition-all duration-500`}
     >
       {children}
-    </main>
+    </section>
   );
 };
 
