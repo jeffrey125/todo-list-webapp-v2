@@ -78,8 +78,9 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
         )}
 
         <button
+          aria-label="Submit New Todo"
           type="submit"
-          className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-lightFontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-fontColor hover:shadow active:bg-palette1Shade active:text-fontColor active:shadow focus:bg-palette1Shade focus:text-fontColor focus:shadow dark:text-fontColor dark:hover:text-lightFontColor dark:active:text-lightFontColor outline-none dark:focus:text-lightFontColor z-10"
+          className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-fontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-lightFontColor hover:shadow active:bg-palette1Shade active:text-lightFontColor active:shadow focus:bg-palette1Shade focus:text-lightFontColor focus:shadow outline-none z-10"
           onClick={submitHandler}
         >
           <span className="hidden sm:block">Add Todo</span>

@@ -177,7 +177,11 @@ const Todo = ({ todoData, id }: TodoProps) => {
         rows={4}
         onChange={editChangeHandler}
       />
-      <TodoButton handler={editSubmitHandler} className="hidden lg:flex">
+      <TodoButton
+        handler={editSubmitHandler}
+        className="hidden lg:flex"
+        ariaLabelText="Submit Edited Todo"
+      >
         <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
       </TodoButton>
     </motion.form>
@@ -212,7 +216,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.2 }}
       variants={listVariant}
-      className="relative flex flex-col list-none w-full border-b-2 border-primaryTint2 py-4 bg-lightFontColor rounded-xl dark:bg-darkPrimary dark:border-darkPallete1 sm:gap-5 sm:flex-row sm:justify-between sm:items-center lg:gap-0 transition-colors duration-300"
+      className="cursor-grab relative flex flex-col list-none w-full border-b-2 border-primaryTint2 py-4 bg-lightFontColor rounded-xl dark:bg-darkPrimary dark:border-darkPallete1 sm:gap-5 sm:flex-row sm:justify-between sm:items-center lg:gap-0 transition-colors duration-300"
     >
       <span
         className={`${strikeTodo} mx-auto sm:relative break-all w-[100%] max-w-[90%] overflow-x-auto text-center sm:text-left sm:ml-4 sm:mx-0 sm:w-full`}
@@ -225,17 +229,28 @@ const Todo = ({ todoData, id }: TodoProps) => {
 
       <div className="flex justify-center w-full gap-3 sm:gap-5 items-center sm:justify-end sm:mr-4">
         {openEditForm && (
-          <MobileEditSaveBTN handler={editSubmitHandler} className="lg:hidden">
+          <MobileEditSaveBTN
+            handler={editSubmitHandler}
+            className="lg:hidden"
+            ariaLabelText="Submit Edited Todo"
+          >
             <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
           </MobileEditSaveBTN>
         )}
-        <TodoButton handler={doneHandler} disableButton={openEditForm}>
+        <TodoButton
+          handler={doneHandler}
+          disableButton={openEditForm}
+          ariaLabelText="Cross-out Todo"
+        >
           <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 group-disabled:fill-fontColor dark:fill-fontColor dark:group-hover:fill-lightFontColor dark:group-disabled:fill-lightFontColor" />
         </TodoButton>
-        <TodoButton handler={showEditInputHandler}>
+        <TodoButton
+          handler={showEditInputHandler}
+          ariaLabelText="Open Edit Todo Form"
+        >
           <PencilIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
-        <TodoButton handler={deleteHandler}>
+        <TodoButton handler={deleteHandler} ariaLabelText="Delete Todo">
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
 
