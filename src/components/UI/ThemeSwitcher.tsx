@@ -64,6 +64,7 @@ const ThemeSwitcher = () => {
   // Theme button switcher
   const themeButtonIcon = isDarkMode ? (
     <motion.button
+      aria-label="Theme switcher"
       variants={themeVariant}
       animate={controls}
       onClick={lightModeHandler}
@@ -82,6 +83,7 @@ const ThemeSwitcher = () => {
     </motion.button>
   ) : (
     <motion.button
+      aria-label="Theme switcher"
       variants={themeVariant}
       animate={controls}
       onClick={darkModeHandler}
