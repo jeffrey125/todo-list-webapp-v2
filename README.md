@@ -17,6 +17,7 @@ This is an upgrade to my first To-do app which is built on Vanilla JS with an MV
 - Framer-motion
 - pwa-assets-generator
 - Cloudflare Tunnel
+- Cypress
 
 ### Journey for this project
 
@@ -37,3 +38,5 @@ This is an upgrade to my first To-do app which is built on Vanilla JS with an MV
 - (06/13/2022) Today I learned about PWA through the documentation of create-react-app and some youtube video and turned this app into a PWA so that I can practice the knowledge I gained today. I also utilized the pwa-assets-generator for making a simple splash screen and logo screen to be compatible to any devices, although my PWA knowledge is still basic I will continue myself to learn on this technology, because It interest me on building stuff like this. I also utilized Cloudflare tunnel for local hosting on my PC so that I can see my PWA on my mobile device for test purposes and without hosting it in vercel.
 
 - (06/14/2022) An update regarding on this issue https://github.com/framer/motion/issues/1579 found out that StrictMode is the culprit of this weird behavior credits to [Systemcluster](https://github.com/framer/motion/issues/1518#issuecomment-1135927013)
+
+- (06/16/2022) I tried Cypress for Testing and tested my Todo app several time if it will serve the core functionality of the app which is the CRUD operations and fixed light flickering when dark mode.
