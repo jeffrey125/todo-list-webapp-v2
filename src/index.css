@@ -17,6 +17,13 @@ html {
   font-family: 'Rubik', sans-serif;
 }
 
+html.dark {
+  background-color: #060e14;
+}
+html.light {
+  background-color: #c5dbee;
+}
+
 .spacer {
   aspect-ratio: 960/300;
   width: 100%;

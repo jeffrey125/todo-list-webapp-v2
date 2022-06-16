@@ -2,18 +2,22 @@
 <html lang="en">
 
 <head>
+  <title>To-do-list-v2</title>
   <meta charset="utf-8">
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#3F88c5">
   <meta name="description" content="To-do-app-v2 by jeffrey125">
-  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-
-  <title>To-do-list-v2</title>
-  <link rel="apple-touch-icon" href="assets/apple-icon-180.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script>
+    const { theme: userTheme } = JSON.parse(localStorage.getItem('theme'))
+    if (userTheme) document.documentElement.classList.add(userTheme)
+  </script>
+  <link rel="apple-touch-icon" href="assets/apple-icon-180.png">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
   <link rel="apple-touch-startup-image" href="assets/apple-splash-2048-2732.jpg"
     media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
   <link rel="apple-touch-startup-image" href="assets/apple-splash-2732-2048.jpg"
