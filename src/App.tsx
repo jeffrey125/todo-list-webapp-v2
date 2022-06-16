@@ -13,12 +13,11 @@ const containerVariant = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.3,
-      delay: 0.3,
+      duration: 0.5,
     },
-    hidden: {
-      opacity: 0,
-    },
+  },
+  hidden: {
+    opacity: 0,
   },
 };
 
@@ -46,7 +45,6 @@ function App() {
           key="main-content"
           animate="visible"
           initial="hidden"
-          exit="hidden"
           variants={containerVariant}
         >
           <MainBG>
