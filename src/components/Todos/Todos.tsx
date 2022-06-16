@@ -29,6 +29,7 @@ const Todos = ({ dummyDiv }: TodosProps) => {
   return (
     <div className="overflow-hidden w-full h-[70%] border-2 border-primaryTint2 rounded-2xl sm:h-[100%]">
       <Reorder.Group
+        data-cy="cy-todos"
         values={items}
         onReorder={todosCtx.reorderTodos}
         animate="visible"
@@ -41,7 +42,7 @@ const Todos = ({ dummyDiv }: TodosProps) => {
           {items.map((item) => (
             <Todo key={item.id} id={item.id} todoData={item} />
           ))}
-          <div ref={dummyDiv} />
+          <div ref={dummyDiv} data-cy="cy-dummy-div" />
         </AnimatePresence>
       </Reorder.Group>
     </div>

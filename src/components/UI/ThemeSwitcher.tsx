@@ -64,6 +64,7 @@ const ThemeSwitcher = () => {
   // Theme button switcher
   const themeButtonIcon = isDarkMode ? (
     <motion.button
+      data-cy="cy-darkSwitcher"
       aria-label="Theme switcher"
       variants={themeVariant}
       animate={controls}
@@ -83,6 +84,7 @@ const ThemeSwitcher = () => {
     </motion.button>
   ) : (
     <motion.button
+      data-cy="cy-lightSwitcher"
       aria-label="Theme switcher"
       variants={themeVariant}
       animate={controls}
@@ -109,6 +111,7 @@ const ThemeSwitcher = () => {
     <div className="flex items-center gap-4 mb-4">
       <h1 className="text-lg break-words max-w-[5rem]">Theme Switcher</h1>
       <div
+        data-cy="cy-outer-themeSwitcherButton"
         className={`p-2 w-[8rem] ${themeButtonBG} rounded-full  transition-all duration-500`}
       >
         <AnimatePresence exitBeforeEnter>{themeButtonIcon}</AnimatePresence>

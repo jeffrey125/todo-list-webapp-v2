@@ -172,27 +172,38 @@ const Todo = ({ todoData, id }: TodoProps) => {
       className="flex items-center justify-start gap-5"
     >
       <textarea
+        data-cy="cy-edit-todo-input"
         value={editData.renderTodo}
         className="resize-none rounded-lg p-2 my-2 w-full lg:w-[80%] transition-colors duration-300outline-primaryColor outline-primaryColor dark:text-lightFontColor dark:bg-[#19364f]"
         rows={4}
         onChange={editChangeHandler}
       />
       <TodoButton
+        data-cy="cy-edit-submit-button"
         handler={editSubmitHandler}
         className="hidden lg:flex"
         ariaLabelText="Submit Edited Todo"
       >
-        <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
+        <SaveIcon
+          data-cy="cy-edit-submit-icon-button"
+          className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor"
+        />
       </TodoButton>
     </motion.form>
   ) : (
-    <motion.span key="listContent" exit="hidden" variants={formVariant}>
+    <motion.span
+      data-cy={`cy-text-${id}`}
+      key="listContent"
+      exit="hidden"
+      variants={formVariant}
+    >
       {todo}
     </motion.span>
   );
 
   const listEditError = editError.showError && (
     <motion.p
+      data-cy="cy-list-edit-error"
       key="listError"
       animate="visible"
       initial="hidden"
@@ -210,6 +221,7 @@ const Todo = ({ todoData, id }: TodoProps) => {
 
   return (
     <Reorder.Item
+      data-cy={`cy-${id}`}
       value={todoData}
       id={id}
       style={{ y, boxShadow }}
@@ -227,30 +239,43 @@ const Todo = ({ todoData, id }: TodoProps) => {
         <AnimatePresence exitBeforeEnter>{listEditError}</AnimatePresence>
       </span>
 
-      <div className="flex justify-center w-full gap-3 sm:gap-5 items-center sm:justify-end sm:mr-4">
+      <div
+        data-cy={`cy-actions-${id}`}
+        className="flex justify-center w-full gap-3 sm:gap-5 items-center sm:justify-end sm:mr-4"
+      >
         {openEditForm && (
           <MobileEditSaveBTN
+            data-cy="cy-mobile-edit-submit-button"
             handler={editSubmitHandler}
             className="lg:hidden"
             ariaLabelText="Submit Edited Todo"
           >
-            <SaveIcon className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
+            <SaveIcon
+              data-cy="c-ymobile-edit-submit-icon-button"
+              className="h-5 w-5 sm:h-7 sm:w-7 fill-lightFontColor group-hover:fill-fontColor transition-all duration-300  dark:fill-fontColor dark:group-hover:fill-lightFontColor"
+            />
           </MobileEditSaveBTN>
         )}
         <TodoButton
           handler={doneHandler}
           disableButton={openEditForm}
           ariaLabelText="Cross-out Todo"
+          data-cy="cy-check-button"
         >
           <CheckIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 group-disabled:fill-fontColor dark:fill-fontColor dark:group-hover:fill-lightFontColor dark:group-disabled:fill-lightFontColor" />
         </TodoButton>
         <TodoButton
+          data-cy="cy-open-edit-form"
           handler={showEditInputHandler}
           ariaLabelText="Open Edit Todo Form"
         >
           <PencilIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
-        <TodoButton handler={deleteHandler} ariaLabelText="Delete Todo">
+        <TodoButton
+          data-cy="cy-delete-button"
+          handler={deleteHandler}
+          ariaLabelText="Delete Todo"
+        >
           <TrashIcon className="h-5 w-5 sm:h-7 sm:w-7  fill-lightFontColor group-hover:fill-fontColor transition-all duration-300 dark:fill-fontColor dark:group-hover:fill-lightFontColor" />
         </TodoButton>
 

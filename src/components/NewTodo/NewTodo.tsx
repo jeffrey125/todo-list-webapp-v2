@@ -70,10 +70,12 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
 
   return (
     <form
+      data-cy="cy-todo-form"
       onSubmit={submitHandler}
       className="mt-auto flex flex-col w-full items-start sm:gap-5 sm:flex-row sm:justify-center sm:items-center sm:h-20"
     >
       <label
+        data-cy="cy-todo-label"
         htmlFor="text"
         className="text-2xl font-bold w-full sm:w-[30%] md:text-3xl"
       >
@@ -81,6 +83,7 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
       </label>
       <div className="relative flex items-center gap-5 h-[5rem] w-full">
         <input
+          data-cy="cy-todo-input"
           type="text"
           id="text"
           className={`text-2xl h-12 w-full  lg:text-3xl lg:w-80 rounded-lg ${errorBorderColor} transition-colors duration-300 focus:outline-primaryColor p-1 dark:text-lightFontColor dark:bg-[#19364f]`}
@@ -90,6 +93,7 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
         <AnimatePresence>
           {showError && (
             <motion.p
+              data-cy="todo-input-error"
               animate="visible"
               initial="hidden"
               exit="hidden"
@@ -102,13 +106,19 @@ const NewTodo = ({ dummyDiv }: NewTodoProps) => {
         </AnimatePresence>
 
         <button
+          data-cy="cy-submit-button"
           aria-label="Submit New Todo"
           type="submit"
           className="group flex items-center justify-center border-2 border-solid border-palette1 font-medium text-fontColor h-12 w-24 rounded-xl sm:w-[30%] lg:w-full lg:rounded-xl bg-palette1 transition-all duration-300 hover:bg-palette1Shade hover:text-lightFontColor hover:shadow active:bg-palette1Shade active:text-lightFontColor active:shadow focus:bg-palette1Shade focus:text-lightFontColor focus:shadow outline-none z-10"
           onClick={submitHandler}
         >
-          <span className="hidden sm:block">Add Todo</span>
-          <PlusIcon className="block sm:hidden h-5 w-5 z-1" />
+          <span data-cy="cy-submit-textContent" className="hidden sm:block">
+            Add Todo
+          </span>
+          <PlusIcon
+            data-cy="cy-submit-mobileIcon"
+            className="block sm:hidden h-5 w-5 z-1"
+          />
         </button>
       </div>
     </form>
