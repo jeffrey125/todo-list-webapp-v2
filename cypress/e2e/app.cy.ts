@@ -1,8 +1,13 @@
-const sizes = ['iphone-6', 'ipad-2', 'macbook-16'];
+import 'cypress-localstorage-commands';
 
 describe('Todo App', () => {
   context('Create Todo Functionality', () => {
-    before(() => {
+    beforeEach(() => {
+      localStorage.setItem(
+        'theme',
+        JSON.stringify({ isDarkMode: true, theme: 'dark' })
+      );
+
       cy.visit('/');
     });
 
@@ -16,7 +21,7 @@ describe('Todo App', () => {
 
       // Submits form using button
       cy.get('[data-cy="cy-todo-input"]').type('Test Todo 2');
-      cy.get('[data-cy=k"cy-submit-button"]').click();
+      cy.get('[data-cy="cy-submit-button"]').click();
       cy.get('[data-cy="cy-todos"] li')
         .should('have.length', 2)
         .last()
@@ -40,6 +45,11 @@ describe('Todo App', () => {
 
   context('Check,Edit and Delete Functionality', () => {
     beforeEach(() => {
+      localStorage.setItem(
+        'theme',
+        JSON.stringify({ isDarkMode: true, theme: 'dark' })
+      );
+
       localStorage.setItem(
         'todo',
         JSON.stringify([
